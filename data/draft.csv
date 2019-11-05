@@ -1,0 +1,61 @@
+"","yearDraft","numberPickOverall","numberRound","numberRoundPick","namePlayer","slugTeam","nameOrganizationFrom","typeOrganizationFrom","idPlayer","idTeam","nameTeam","cityTeam","teamName","slugOrganizationTypeFrom","locationOrganizationFrom"
+"1",2018,1,1,1,"Deandre Ayton","PHX","Arizona","College/University",1629028,1610612756,"Phoenix Suns","Phoenix","Suns","COL",NA
+"2",2018,2,1,2,"Marvin Bagley III","SAC","Duke","College/University",1628963,1610612758,"Sacramento Kings","Sacramento","Kings","COL",NA
+"3",2018,3,1,3,"Luka Doncic","ATL","Real Madrid Baloncesto","Other Team/Club",1629029,1610612737,"Atlanta Hawks","Atlanta","Hawks","PRO","Spain"
+"4",2018,4,1,4,"Jaren Jackson Jr.","MEM","Michigan State","College/University",1628991,1610612763,"Memphis Grizzlies","Memphis","Grizzlies","COL",NA
+"5",2018,5,1,5,"Trae Young","DAL","Oklahoma","College/University",1629027,1610612742,"Dallas Mavericks","Dallas","Mavericks","COL",NA
+"6",2018,6,1,6,"Mo Bamba","ORL","Texas","College/University",1628964,1610612753,"Orlando Magic","Orlando","Magic","COL",NA
+"7",2018,7,1,7,"Wendell Carter Jr.","CHI","West Virginia","College/University",1628976,1610612741,"Chicago Bulls","Chicago","Bulls","COL",NA
+"8",2018,8,1,8,"Collin Sexton","CLE","Alabama","College/University",1629012,1610612739,"Cleveland Cavaliers","Cleveland","Cavaliers","COL",NA
+"9",2018,9,1,9,"Kevin Knox II","NYK","Kentucky","College/University",1628995,1610612752,"New York Knicks","New York","Knicks","COL",NA
+"10",2018,10,1,10,"Mikal Bridges","PHI","Villanova","College/University",1628969,1610612755,"Philadelphia 76ers","Philadelphia","76ers","COL",NA
+"11",2018,11,1,11,"Shai Gilgeous-Alexander","CHA","Kentucky","College/University",1628983,1610612766,"Charlotte Hornets","Charlotte","Hornets","COL",NA
+"12",2018,12,1,12,"Miles Bridges","LAC","Michigan State","College/University",1628970,1610612746,"LA Clippers","LA","Clippers","COL",NA
+"13",2018,13,1,13,"Jerome Robinson","LAC","Boston College","College/University",1629010,1610612746,"LA Clippers","LA","Clippers","COL",NA
+"14",2018,14,1,14,"Michael Porter Jr.","DEN","Missouri","College/University",1629008,1610612743,"Denver Nuggets","Denver","Nuggets","COL",NA
+"15",2018,15,1,15,"Troy Brown Jr.","WAS","Oregon","College/University",1628972,1610612764,"Washington Wizards","Washington","Wizards","COL",NA
+"16",2018,16,1,16,"Zhaire Smith","PHX","Texas Tech","College/University",1629015,1610612756,"Phoenix Suns","Phoenix","Suns","COL",NA
+"17",2018,17,1,17,"Donte DiVincenzo","MIL","Villanova","College/University",1628978,1610612749,"Milwaukee Bucks","Milwaukee","Bucks","COL",NA
+"18",2018,18,1,18,"Lonnie Walker IV","SAS","Miami (FL)","College/University",1629022,1610612759,"San Antonio Spurs","San Antonio","Spurs","COL",NA
+"19",2018,19,1,19,"Kevin Huerter","ATL","Maryland","College/University",1628989,1610612737,"Atlanta Hawks","Atlanta","Hawks","COL",NA
+"20",2018,20,1,20,"Josh Okogie","MIN","Georgia Tech","College/University",1629006,1610612750,"Minnesota Timberwolves","Minnesota","Timberwolves","COL",NA
+"21",2018,21,1,21,"Grayson Allen","UTA","Duke","College/University",1628960,1610612762,"Utah Jazz","Utah","Jazz","COL",NA
+"22",2018,22,1,22,"Chandler Hutchison","CHI","Boise State","College/University",1628990,1610612741,"Chicago Bulls","Chicago","Bulls","COL",NA
+"23",2018,23,1,23,"Aaron Holiday","IND","California-Los Angeles","College/University",1628988,1610612754,"Indiana Pacers","Indiana","Pacers","COL",NA
+"24",2018,24,1,24,"Anfernee Simons","POR","IMG Academy","High School",1629014,1610612757,"Portland Trail Blazers","Portland","Trail Blazers","HS",NA
+"25",2018,25,1,25,"Moritz Wagner","LAL","Michigan","College/University",1629021,1610612747,"Los Angeles Lakers","Los Angeles","Lakers","COL",NA
+"26",2018,26,1,26,"Landry Shamet","PHI","Wichita State","College/University",1629013,1610612755,"Philadelphia 76ers","Philadelphia","76ers","COL",NA
+"27",2018,27,1,27,"Robert Williams III","BOS","Texas A&M","College/University",1629057,1610612738,"Boston Celtics","Boston","Celtics","COL",NA
+"28",2018,28,1,28,"Jacob Evans","GSW","Cincinnati","College/University",1628980,1610612744,"Golden State Warriors","Golden State","Warriors","COL",NA
+"29",2018,29,1,29,"Dzanan Musa","BKN","KK Cedevita","Other Team/Club",1629058,1610612751,"Brooklyn Nets","Brooklyn","Nets","PRO","Croatia"
+"30",2018,30,1,30,"Omari Spellman","ATL","Villanova","College/University",1629016,1610612737,"Atlanta Hawks","Atlanta","Hawks","COL",NA
+"31",2018,31,2,1,"Elie Okobo","PHX","Elan Bearnais Pau-Orthez","Other Team/Club",1629059,1610612756,"Phoenix Suns","Phoenix","Suns","PRO","France"
+"32",2018,32,2,2,"Jevon Carter","MEM","West Virginia","College/University",1628975,1610612763,"Memphis Grizzlies","Memphis","Grizzlies","COL",NA
+"33",2018,33,2,3,"Jalen Brunson","DAL","Villanova","College/University",1628973,1610612742,"Dallas Mavericks","Dallas","Mavericks","COL",NA
+"34",2018,34,2,4,"Devonte' Graham","ATL","Villanova","College/University",1628984,1610612737,"Atlanta Hawks","Atlanta","Hawks","COL",NA
+"35",2018,35,2,5,"Melvin Frazier Jr.","ORL","Tulane","College/University",1628982,1610612753,"Orlando Magic","Orlando","Magic","COL",NA
+"36",2018,36,2,6,"Mitchell Robinson","NYK",NA,NA,1629011,1610612752,"New York Knicks","New York","Knicks","UNK",NA
+"37",2018,37,2,7,"Gary Trent Jr.","SAC","Duke","College/University",1629107,1610612758,"Sacramento Kings","Sacramento","Kings","COL",NA
+"38",2018,38,2,8,"Khyri Thomas","PHI","Creighton","College/University",1629017,1610612755,"Philadelphia 76ers","Philadelphia","76ers","COL",NA
+"39",2018,39,2,9,"Isaac Bonga","PHI","Fraport Skyliners","Other Team/Club",1629067,1610612755,"Philadelphia 76ers","Philadelphia","76ers","PRO","Germany"
+"40",2018,40,2,10,"Rodions Kurucs","BKN","FC Barcelona Basquet","Other Team/Club",1629066,1610612751,"Brooklyn Nets","Brooklyn","Nets","PRO","Spain"
+"41",2018,41,2,11,"Jarred Vanderbilt","ORL","Kentucky","College/University",1629020,1610612753,"Orlando Magic","Orlando","Magic","COL",NA
+"42",2018,42,2,12,"Bruce Brown","DET","Miami (FL)","College/University",1628971,1610612765,"Detroit Pistons","Detroit","Pistons","COL",NA
+"43",2018,43,2,13,"Justin Jackson","DEN","Maryland","College/University",1628992,1610612743,"Denver Nuggets","Denver","Nuggets","COL",NA
+"44",2018,44,2,14,"Issuf Sanon","WAS","KK Olimpija","Other Team/Club",1629068,1610612764,"Washington Wizards","Washington","Wizards","PRO","Slovenia"
+"45",2018,45,2,15,"Hamidou Diallo","BKN","Kentucky","College/University",1628977,1610612751,"Brooklyn Nets","Brooklyn","Nets","COL",NA
+"46",2018,46,2,16,"De'Anthony Melton","HOU","Southern California","College/University",1629001,1610612745,"Houston Rockets","Houston","Rockets","COL",NA
+"47",2018,47,2,17,"Svi Mykhailiuk","LAL","Kansas","College/University",1629004,1610612747,"Los Angeles Lakers","Los Angeles","Lakers","COL",NA
+"48",2018,48,2,18,"Keita Bates-Diop","MIN","Ohio State","College/University",1628966,1610612750,"Minnesota Timberwolves","Minnesota","Timberwolves","COL",NA
+"49",2018,49,2,19,"Chimezie Metu","MIL","Southern California","College/University",1629002,1610612749,"Milwaukee Bucks","Milwaukee","Bucks","COL",NA
+"50",2018,50,2,20,"Alize Johnson","IND","Missouri State","College/University",1628993,1610612754,"Indiana Pacers","Indiana","Pacers","COL",NA
+"51",2018,51,2,21,"Tony Carr","NOP","Penn State","College/University",1628974,1610612740,"New Orleans Pelicans","New Orleans","Pelicans","COL",NA
+"52",2018,52,2,22,"Vincent Edwards","UTA","Purdue","College/University",1629053,1610612762,"Utah Jazz","Utah","Jazz","COL",NA
+"53",2018,53,2,23,"Devon Hall","OKC","Virginia","College/University",1628985,1610612760,"Oklahoma City Thunder","Oklahoma City","Thunder","COL",NA
+"54",2018,54,2,24,"Shake Milton","DAL","Southern Methodist","College/University",1629003,1610612742,"Dallas Mavericks","Dallas","Mavericks","COL",NA
+"55",2018,55,2,25,"Arnoldas Kulboka","CHA","Brose Bamberg","Other Team/Club",1629083,1610612766,"Charlotte Hornets","Charlotte","Hornets","PRO","Germany"
+"56",2018,56,2,26,"Ray Spalding","PHI","Louisville","College/University",1629034,1610612755,"Philadelphia 76ers","Philadelphia","76ers","COL",NA
+"57",2018,57,2,27,"Kevin Hervey","OKC","Texas-Arlington","College/University",1628987,1610612760,"Oklahoma City Thunder","Oklahoma City","Thunder","COL",NA
+"58",2018,58,2,28,"Thomas Welsh","DEN","California-Los Angeles","College/University",1629118,1610612743,"Denver Nuggets","Denver","Nuggets","COL",NA
+"59",2018,59,2,29,"George King","PHX","Colorado","College/University",1628994,1610612756,"Phoenix Suns","Phoenix","Suns","COL",NA
+"60",2018,60,2,30,"Kostas Antetokounmpo","PHI","Dayton","College/University",1628961,1610612755,"Philadelphia 76ers","Philadelphia","76ers","COL",NA
