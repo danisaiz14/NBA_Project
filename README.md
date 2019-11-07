@@ -1,4 +1,4 @@
-# Domain of Interest 
+# NBA Project
 
 Why are you interested in this field/domain? **Carlos**
 What other examples of data driven project have you found related to this domain (share at least 3)? **Dani**
