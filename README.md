@@ -22,5 +22,4 @@ This dataset consists of two csv files. The first one, [salaries_team.csv](../ma
 
 The second one, [salaries_player.csv](../master/data/salaries_player.csv), is a list of the players of all the teams of the NBA and his salaries. It has 621 rows and 3 columns (Player, Salary and Team).
 
-
 What questions (from above) can be answered using the data in this dataset? TBD
