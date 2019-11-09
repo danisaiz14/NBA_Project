@@ -18,7 +18,7 @@ This dataset contains information about the salaries of the players of each Team
 
 It have been obtained from [Hoopshype.com](https://hoopshype.com/salaries/2018-2019/ "Hoopshype page for 2018 - 2019 salaries") and extracted using a web scraping [script](../master/utils/player_salary_scrapper.R) that recolects the data from the page of the salaries for the 2018-2019 season.
 
-This dataset consists of two csv files. The first one, [salaries_team.csv](../master/data/salaries_team.csv) and extracted using a web scraping [script](../master/utils/player_salary_scrapper.R), is a list of the teams of the NBA and the sum of their players' salaries. It has 30 rows and 4 columns (nameTeam, idTeam, slugTeam and salaries).
+This dataset consists of two csv files. The first one, [salaries_team.csv](../master/data/salaries_team.csv), is a list of the teams of the NBA and the sum of their players' salaries. It has 30 rows and 4 columns (nameTeam, idTeam, slugTeam and salaries).
 
 The second one, [salaries_player.csv](../master/data/salaries_player.csv), is a list of the players of all the teams of the NBA and his salaries. It has 621 rows and 3 columns (Player, Salary and Team).
 
