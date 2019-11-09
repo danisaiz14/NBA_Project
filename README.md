@@ -1,39 +1,26 @@
-# NBA Project
+# NBA Project Proposal
 
-Why are you interested in this field/domain? **Carlos**
-What other examples of data driven project have you found related to this domain (share at least 3)? **Dani**
-What data-driven questions do you hope to answer about this domain (share at least 3)?  **Angel & Alvaro**
+## Domain of interest
 
-# Finding Data
+Sports are one of the best data providers to perform awesome analysis. Despite football (also named soccer in the USA) is the king sport in Spain, we think the sport which fits better for out project is basketball, because its usage of statistics in a standarized way and the huge ammount of different measures available.
 
-Where did you download the data (e.g., a web URL)?
-How was the data collected or generated? Make sure to explain who collected the data (not necessarily the same people that host the data), and who or what the data is about?
-How many observations (rows) are in your data?
-How many features (columns) are in the data?
-What questions (from above) can be answered using the data in this dataset?
+Despite Spain won the last FIBA World Cup, all our top players are based in the best league in the world, the NBA. The NBA is not only the best league with the best players but also the organization with more open official data provided via an API (the API is not documented anyways).
 
-## Salaries **Angel**+
+The NBA is not only the best basketball league in the world, it also follows a public data policy which allows us to gather data related with almost any aspect of the league, from salaries to historical draft data. Moreover, the NBA regular season has 82 games per team which give us a total of 1230 games with at least 16 different players playing each match.
 
-###Where did you download the data (e.g., a web URL)?
-[Hoopshype.com](https://hoopshype.com/salaries/2018-2019/ "Hoopshype page for 2018 - 2019 salaries")
+Because there's so many data available, we have chosen to focus our project on different NBA datasets for the 2018-2019 season.
 
-###How was the data collected or generated?
+## Finding Data
 
-We have created a Web scraping [script](../blob/master/utils/player_salary_scrapper.R) for recolecting the data from the Hoopshype page of the salaries for the 2018-2019 season
+### Salaries Dataset
 
-###What the data is about?
+This dataset contains information about the salaries of the players of each Team in the NBA.
 
-###How many observations (rows) are in your data?
-salaries_player.csv has 621 rows
-salaries_team.csv has 30 rows
+It have been obtained from [Hoopshype.com](https://hoopshype.com/salaries/2018-2019/ "Hoopshype page for 2018 - 2019 salaries") and extracted using a web scraping [script](../master/utils/player_salary_scrapper.R) that recolects the data from the page of the salaries for the 2018-2019 season.
 
-###How many features (columns) are in the data?
-salaries_player.csv has 3 columns
-salaries_team.csv has 4 columns
+This dataset consists of two csv files. The first one, [salaries_team.csv](../master/data/salaries_team.csv) and extracted using a web scraping [script](../master/utils/player_salary_scrapper.R), is a list of the teams of the NBA and the sum of their players' salaries. It has 30 rows and 4 columns (nameTeam, idTeam, slugTeam and salaries).
 
-###What questions (from above) can be answered using the data in this dataset?
-TBD
+The second one, [salaries_player.csv](../master/data/salaries_player.csv), is a list of the players of all the teams of the NBA and his salaries. It has 621 rows and 3 columns (Player, Salary and Team).
 
-## Draft **Alvaro**
 
-## Estadisticas
+What questions (from above) can be answered using the data in this dataset? TBD
