@@ -63,57 +63,57 @@ This dataset contains statistics about the NBA games during the 2018-19 season.
 
 It have been obtained from [nbastatR](http://asbcllc.com/nbastatR/reference/index.html "nBastaR").
 
-This dataset consists of one csv file. It's named [regularseason1819_games.csv](../master/data/regularseason1819_games.csv). It has 2460 rows and 47 columns:
+This dataset consists of one csv file. It's named [regularseason1819_games.csv](../master/data/regularseason1819_games.csv). It has 2460 observations and 47 columns:
 
 | Column | Type | Description |
 | :------| :----| :-----------|
-| yearSeason | num | The year when the statistics were taken |
-| slugSeason| num | The season of the match |
-| slugLeague| chr | League name |
-| typeSeason| chr | Type of season |
-| dateGame| date | Date the match was played|
-| idGame| num | Id of the match |
-| numberGameTeamSeason| num | Day in season |
-| nameTeam| num | Name of the team |
-| idTeam| num | Id of the team |
-| isB2B| num |  |
-| isB2BFirst| num |  |
-| isB2BSecond| num |  |
-| locationGame| num | Location where the match was played |
-| slugMatchup| num |  |
-| slugTeam| num |  |
-| countDaysRestTeam| num |  |
-| countDaysNextGameTeam| num |  |
-| slugOpponent| num |  |
-| slugTeamWinner| num |  |
-| slugTeamLoser| num |  |
-| outcomeGame| num |  |
-| isWin| num |  |
-| fgmTeam| num |  |
-| fgaTeam| num |  |
-| pctFGTeam| num |  |
-| fg3mTeam| num |  |
-| fg3aTeam| num |  |
-| pctFG3Team| num |  |
-| pctFTTeam| num |  |
-| hasVideo| num |  |
-| fg2mTeam| num |  |
-| fg2aTeam| num |  |
-| pctFG2Team| num |  |
-| minutesTeam| num |  |
-| ftmTeam| num |  |
-| ftaTeam| num |  |
-| orebTeam| num |  |
-| drebTeam| num |  |
-| trebTeam| num |  |
-| astTeam| num |  |
-| stlTeam| num |  |
-| blkTeam| num |  |
-| tovTeam| num |  |
-| pfTeam| num |  |
-| ptsTeam| num |  |
-| plusminusTeam| num |  |
-| urlTeamSeasonLogo | chr | Url with the logo of the team |
+| `yearSeason` | num | The year when the statistics were taken |
+| `slugSeason`| num | The season of the match |
+| `slugLeague`| chr | League name abbreviation|
+| `typeSeason`| chr | Type of season (always `Regular Season`) |
+| `dateGame`| date | Date the match was played |
+| `idGame`| num | Id of the match on the NBA API|
+| `numberGameTeamSeason`| num | Match order for the team |
+| `nameTeam`| num | Name of the team |
+| `idTeam`| num | Id of the team on the NBA API|
+| `isB2B`| logi | The match was a back to back |
+| `isB2BFirst`| logi | The match was the first back to back |
+| `isB2BSecond`| logi | The match was the second back to back |
+| `locationGame`| chr | Location where the match was played |
+| `slugMatchup`| chr | Abbreviation of the match |
+| `slugTeam`| chr | Abbreviation of the team |
+| `countDaysRestTeam`| num | Days the team had for resting before the match |
+| `countDaysNextGameTeam`| num | Days before the next team's match |
+| `slugOpponent`| chr | Abbreviation of the opponent team |
+| `slugTeamWinner`| chr | Abbreviation of the winner team |
+| `slugTeamLoser`| chr | Abbreviation of the defeated team |
+| `outcomeGame`| chr | The abbreviation of the result (`W|L`) |
+| `isWin`| logi | True if the team won the match |
+| `fgmTeam`| num | Field goals made by the team |
+| `fgaTeam`| num | Field goals attempted by the team |
+| `pctFGTeam`| num | % of field goals made vs attempted |
+| `fg3mTeam`| num | 3-pts made by the team |
+| `fg3aTeam`| num | 3-pts made by the team |
+| `pctFG3Team`| num | % of 3-pts made vs attempted |
+| `pctFTTeam`| num | % of free throws scored |
+| `hasVideo`| logi |  |
+| `fg2mTeam`| num |  |
+| `fg2aTeam`| num |  |
+| `pctFG2Team`| num |  |
+| `minutesTeam`| num | Minutes played by the team|
+| `ftmTeam`| num |  |
+| `ftaTeam`| num |  |
+| `orebTeam`| num |  |
+| `drebTeam`| num |  |
+| `trebTeam`| num |  |
+| `astTeam`| num |  |
+| `stlTeam`| num |  |
+| `blkTeam`| num |  |
+| `tovTeam`| num |  |
+| `pfTeam`| num |  |
+| `ptsTeam`| num | Points scored by the team |
+| `plusminusTeam`| num | Difference of points scored with the other team |
+| `urlTeamSeasonLogo`| chr | Url with the logo of the team |
 
 This dataset can answer the second question. 
 
