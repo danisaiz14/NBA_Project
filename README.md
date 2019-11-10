@@ -63,7 +63,7 @@ This dataset contains statistics about the NBA games during the 2018-19 season.
 
 It have been obtained from [nbastatR](http://asbcllc.com/nbastatR/reference/index.html "nBastaR").
 
-This dataset consists of one csv file. It's named [regularseason1819_games.csv](../master/data/regularseason1819_games.csv), is a list of the teams of the NBA and the sum of their players' salaries. It has 2460 rows and 47 columns (yearSeason, slugSeason, slugLeague, typeSeason, dateGame, idGame, numberGameTeamSeason, nameTeam, idTeam, isB2B, isB2BFirst, isB2BSecond, locationGame, slugMatchup, slugTeam, countDaysRestTeam, countDaysNextGameTeam, slugOpponent, slugTeamWinner, slugTeamLoser, outcomeGame, isWin, fgmTeam, fgaTeam, pctFGTeam, fg3mTeam, fg3aTeam, pctFG3Team, pctFTTeam, hasVideo, fg2mTeam, fg2aTeam,pctFG2Team,minutesTeam, ftmTeam,ftaTeam, orebTeam, drebTeam, trebTeam, astTeam, stlTeam, blkTeam, tovTeam, pfTeam, ptsTeam, plusminusTeam and urlTeamSeasonLogo).
+This dataset consists of one csv file. It's named [regularseason1819_games.csv](../master/data/regularseason1819_games.csv). It has 2460 rows and 47 columns:
 
 | Column | Type | Description |
 | :------| :----| :-----------|
