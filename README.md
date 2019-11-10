@@ -25,7 +25,9 @@ Because there's so many data available, we have chosen to focus our project on d
 
 ### Data-Driven Questions
 
- - 
+ 1. Are the Draft Position and the Player Performance correlated?
+ 2. Do exist diferences between East and West Conferences match performance?  
+ 3. Do the salaries have a direct relationship with the draft position?
 
 ## Finding Data
 
@@ -37,7 +39,7 @@ It have been obtained from [Hoopshype.com](http://asbcllc.com/nbastatR/reference
 
 This dataset consists of one csv file. It's named [draft.csv](../master/data/draft.csv), and it is a list of the teams of the draft players sorted by the pick overall number and it shows the destination teams. It has 60 rows and 15 columns (yearDraft, numberPickOverall, numberRound, numberRoundPick, namePlayer, slugTeam, nameOrganizationFrom, typeOrganizationFrom, idPlayer, idTeam, nameTeam, cityTeam, teamName, slugOrganizationTypeFrom and locationOrganizationFrom).
 
-What questions (from above) can be answered using the data in this dataset? TBD
+This dataset can answer the first and the third questions. 
 
 ### Match Statistics Dataset
 
@@ -47,7 +49,7 @@ It have been obtained from [Hoopshype.com](http://asbcllc.com/nbastatR/reference
 
 This dataset consists of one csv file. It's named [regularseason1819_games.csv](../master/data/regularseason1819_games.csv), is a list of the teams of the NBA and the sum of their players' salaries. It has 2460 rows and 47 columns (yearSeason, slugSeason, slugLeague, typeSeason, dateGame, idGame, numberGameTeamSeason, nameTeam, idTeam, isB2B, isB2BFirst, isB2BSecond, locationGame, slugMatchup, slugTeam, countDaysRestTeam, countDaysNextGameTeam, slugOpponent, slugTeamWinner, slugTeamLoser, outcomeGame, isWin, fgmTeam, fgaTeam, pctFGTeam, fg3mTeam, fg3aTeam, pctFG3Team, pctFTTeam, hasVideo, fg2mTeam, fg2aTeam,pctFG2Team,minutesTeam, ftmTeam,ftaTeam, orebTeam, drebTeam, trebTeam, astTeam, stlTeam, blkTeam, tovTeam, pfTeam, ptsTeam, plusminusTeam and urlTeamSeasonLogo).
 
-What questions (from above) can be answered using the data in this dataset? TBD
+This dataset can answer the second question. 
 
 ### Salaries Dataset
 
@@ -59,4 +61,4 @@ This dataset consists of two csv files. The first one, [salaries_team.csv](../ma
 
 The second one, [salaries_player.csv](../master/data/salaries_player.csv), is a list of the players of all the teams of the NBA and his salaries. It has 621 rows and 3 columns (Player, Salary and Team).
 
-What questions (from above) can be answered using the data in this dataset? TBD
+This dataset can answer the third question. 
