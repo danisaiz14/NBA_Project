@@ -35,7 +35,7 @@ This dataset contains information about the 2018 Draft players Team in the NBA.
 
 It have been obtained from the official [NBA API](https://stats.nba.com/) using the R package [nbastatR](http://asbcllc.com/nbastatR/).
 
-This dataset consists of one csv file. It's named [draft.csv](../master/data/draft.csv), and it is a list of the teams of the draft players sorted by the pick overall number and it shows the destination teams. It has 60 observations and 15 columns.
+This dataset consists of one csv file. It's named [draft.csv](../master/data/draft.csv), and it is a list of the teams of the draft players sorted by the pick overall number and it shows the destination teams. It has 60 observations and 15 features.
 
 | Column | Type | Description |
 | :------| :----| :-----------|
@@ -55,7 +55,7 @@ This dataset consists of one csv file. It's named [draft.csv](../master/data/dra
 | `slugOrganizationTypeFrom` | chr | The abbreviation of `typeOrganizationFrom`|
 | `locationOrganizationFrom` | chr | The country of the origin organization if this is outside the USA |
 
-This dataset can answer the first and the third questions. 
+This dataset can answer the first question. 
 
 ### Match Statistics Dataset
 
@@ -63,7 +63,7 @@ This dataset contains statistics about the NBA games during the 2018-19 season.
 
 It have been obtained from [nbastatR](http://asbcllc.com/nbastatR/reference/index.html "nBastaR").
 
-This dataset consists of one csv file. It's named [regularseason1819_games.csv](../master/data/regularseason1819_games.csv). It has 2460 observations and 47 columns:
+This dataset consists of one csv file. It's named [regularseason1819_games.csv](../master/data/regularseason1819_games.csv). It has 2460 observations and 47 features.
 
 | Column | Type | Description |
 | :------| :----| :-----------|
@@ -115,15 +115,15 @@ This dataset consists of one csv file. It's named [regularseason1819_games.csv](
 | `plusminusTeam`| num | Difference of points scored with the other team |
 | `urlTeamSeasonLogo`| chr | Url with the logo of the team |
 
-This dataset can answer the second question. 
+This dataset can answer the second and third questions. 
 
 ### Salaries Dataset
 
 This dataset contains information about the salaries of the players of each Team in the NBA.
 
-It have been obtained from [Hoopshype.com](https://hoopshype.com/salaries/2018-2019/ "Hoopshype page for 2018 - 2019 salaries") and extracted using a web scraping [script](../master/utils/player_salary_scrapper.R) that recolects the data from the page of the salaries for the 2018-2019 season.
+It have been obtained from [Hoopshype.com](https://hoopshype.com/salaries/2018-2019/ "Hoopshype page for 2018 - 2019 salaries") and extracted using a web scraping [script](../master/utils/player_salary_scrapper.R) which recolects the data from the page of the salaries for the 2018-2019 season.
 
-This dataset consists of two csv files. The first one, [salaries_team.csv](../master/data/salaries_team.csv), is a list of the teams of the NBA and the sum of their players' salaries. It has 30 observations and 4 columns:
+This dataset consists of two csv files. The first one, [salaries_team.csv](../master/data/salaries_team.csv), is a list of the teams of the NBA and the sum of their players' salaries. It has 30 observations and 4 features.
 
 | Column | Type | Description |
 | :------| :----| :-----------|
@@ -132,7 +132,7 @@ This dataset consists of two csv files. The first one, [salaries_team.csv](../ma
 | `slugTeam` | chr | The abbreviation of `nameTeam` |
 | `salaries` | num | Sum of the salaries of the players of the team |
 
-The second one, [salaries_player.csv](../master/data/salaries_player.csv), is a list of the players of all the teams of the NBA and his salaries. It has 621 observations and 3 columns:
+The second one, [salaries_player.csv](../master/data/salaries_player.csv), is a list of the players of all the teams of the NBA and his salaries. It has 621 observations and 3 features.
 
 | Column | Type | Description |
 | :------| :----| :-----------|
