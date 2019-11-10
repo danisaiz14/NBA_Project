@@ -65,6 +65,56 @@ It have been obtained from [Hoopshype.com](http://asbcllc.com/nbastatR/reference
 
 This dataset consists of one csv file. It's named [regularseason1819_games.csv](../master/data/regularseason1819_games.csv), is a list of the teams of the NBA and the sum of their players' salaries. It has 2460 rows and 47 columns (yearSeason, slugSeason, slugLeague, typeSeason, dateGame, idGame, numberGameTeamSeason, nameTeam, idTeam, isB2B, isB2BFirst, isB2BSecond, locationGame, slugMatchup, slugTeam, countDaysRestTeam, countDaysNextGameTeam, slugOpponent, slugTeamWinner, slugTeamLoser, outcomeGame, isWin, fgmTeam, fgaTeam, pctFGTeam, fg3mTeam, fg3aTeam, pctFG3Team, pctFTTeam, hasVideo, fg2mTeam, fg2aTeam,pctFG2Team,minutesTeam, ftmTeam,ftaTeam, orebTeam, drebTeam, trebTeam, astTeam, stlTeam, blkTeam, tovTeam, pfTeam, ptsTeam, plusminusTeam and urlTeamSeasonLogo).
 
+| Column | Type | Description |
+| :------| :----| :-----------|
+| yearSeason | num | The year when the statistics were taken |
+| slugSeason| num | The season of the match |
+| slugLeague| chr | League name |
+| typeSeason| chr | Type of season |
+| dateGame| date | Date the match was played|
+| idGame| num | Id of the match |
+| numberGameTeamSeason| num | Day in season |
+| nameTeam| num | Name of the team |
+| idTeam| num | Id of the team |
+| isB2B| num |  |
+| isB2BFirst| num |  |
+| isB2BSecond| num |  |
+| locationGame| num | Location where the match was played |
+| slugMatchup| num |  |
+| slugTeam| num |  |
+| countDaysRestTeam| num |  |
+| countDaysNextGameTeam| num |  |
+| slugOpponent| num |  |
+| slugTeamWinner| num |  |
+| slugTeamLoser| num |  |
+| outcomeGame| num |  |
+| isWin| num |  |
+| fgmTeam| num |  |
+| fgaTeam| num |  |
+| pctFGTeam| num |  |
+| fg3mTeam| num |  |
+| fg3aTeam| num |  |
+| pctFG3Team| num |  |
+| pctFTTeam| num |  |
+| hasVideo| num |  |
+| fg2mTeam| num |  |
+| fg2aTeam| num |  |
+| pctFG2Team| num |  |
+| minutesTeam| num |  |
+| ftmTeam| num |  |
+| ftaTeam| num |  |
+| orebTeam| num |  |
+| drebTeam| num |  |
+| trebTeam| num |  |
+| astTeam| num |  |
+| stlTeam| num |  |
+| blkTeam| num |  |
+| tovTeam| num |  |
+| pfTeam| num |  |
+| ptsTeam| num |  |
+| plusminusTeam| num |  |
+| urlTeamSeasonLogo | chr | Url with the logo of the team |
+
 This dataset can answer the second question. 
 
 ### Salaries Dataset
