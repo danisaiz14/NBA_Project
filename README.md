@@ -21,12 +21,10 @@ We selected the following 3 projects:
 - [Using Data Science to Predict the Next NBA MVP](https://towardsdatascience.com/using-data-science-to-predict-the-next-nba-mvp-30526e0443da): This project models the data more correlated with the MVP award given each year by over one hundred sports media members. For 2019 it failed and gave James Harden as the most probable pick for MVP award with 25.4% of chances, but also gave 24.0% to Giannis Antetokounmpo, the actual [winner of the 2019 MVP Award](https://www.nba.com/article/2019/04/12/kia-mvp-ladder-final-edition-2018-19-season?collection=mvp-ladder).
 - [Using Machine Learning to Find the 8 Types of Players in the NBA](https://fastbreakdata.com/classifying-the-modern-nba-player-with-machine-learning-539da03bb824): This project uses machine learning to classify the NBA players on 8 different types and not the classic 5 ones, using [K-Means clustering](https://towardsdatascience.com/understanding-k-means-clustering-in-machine-learning-6a6e67336aa1).
 
-Because there's so many data available, we have chosen to focus our project on different NBA datasets for the 2018-2019 season.
-
 ### Data-Driven Questions
 
  1. Are the Draft Position and the Player Performance correlated?
- 2. Do exist diferences between East and West Conferences match performance?  
+ 2. Do exist differences between East and West Conferences match performance?  
  3. Do the salaries have a direct relationship with the draft position?
 
 ## Finding Data
@@ -35,9 +33,27 @@ Because there's so many data available, we have chosen to focus our project on d
 
 This dataset contains information about the 2018 Draft players Team in the NBA.
 
-It have been obtained from [Hoopshype.com](http://asbcllc.com/nbastatR/reference/index.html "nBastaR").
+It have been obtained from the official [NBA API](https://stats.nba.com/) using the R package [nbastatR](http://asbcllc.com/nbastatR/).
 
-This dataset consists of one csv file. It's named [draft.csv](../master/data/draft.csv), and it is a list of the teams of the draft players sorted by the pick overall number and it shows the destination teams. It has 60 rows and 15 columns (yearDraft, numberPickOverall, numberRound, numberRoundPick, namePlayer, slugTeam, nameOrganizationFrom, typeOrganizationFrom, idPlayer, idTeam, nameTeam, cityTeam, teamName, slugOrganizationTypeFrom and locationOrganizationFrom).
+This dataset consists of one csv file. It's named [draft.csv](../master/data/draft.csv), and it is a list of the teams of the draft players sorted by the pick overall number and it shows the destination teams. It has 60 observations and 15 columns.
+
+| Column | Type | Description |
+| :------| :----| :-----------|
+| `yearDraft` | num | The year when the player was drafted |
+| `numberPickOverral` | num | The order of the pick |
+| `numberRound` | num | The round of the pick |
+| `numberRoundPick` | num | The order of the pick in its round |
+| `namePlayer` | chr | The complete name of the player |
+| `slugTeam` | chr | The abbreviation of the team which did the pick |
+| `nameOrganizationFrom` | chr | Name of the college or team the player comes from |
+| `typeOrganizationFrom` | chr | Type of organization the player comes from |
+| `idPlayer` | num | The id of the player on the NBA API |
+| `idTeam` | num | The id of the team on the NBA API |
+| `nameTeam` | chr | The complete name of the team |
+| `cityTeam` | chr | The city where the team is based (for GSW is not Oakland nor San Francisco) |
+| `teamName` | chr | The name of the team |
+| `slugOrganizationTypeFrom` | chr | The abbreviation of `typeOrganizationFrom`|
+| `locationOrganizationFrom` | chr | The country of the origin organization if this is outside the USA |
 
 This dataset can answer the first and the third questions. 
 
