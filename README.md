@@ -132,7 +132,6 @@ This dataset consists of two csv files. The first one, [salaries_team.csv](../ma
 | `slugTeam` | chr | The abbreviation of `nameTeam` |
 | `salaries` | num | Sum of the salaries of the players of the team |
 
-
 The second one, [salaries_player.csv](../master/data/salaries_player.csv), is a list of the players of all the teams of the NBA and his salaries. It has 621 rows and 3 columns:
 
 | Column | Type | Description |
