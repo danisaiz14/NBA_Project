@@ -61,9 +61,59 @@ This dataset can answer the first and the third questions.
 
 This dataset contains statistics about the NBA games during the 2018-19 season.
 
-It have been obtained from [Hoopshype.com](http://asbcllc.com/nbastatR/reference/index.html "nBastaR").
+It have been obtained from [nbastatR](http://asbcllc.com/nbastatR/reference/index.html "nBastaR").
 
-This dataset consists of one csv file. It's named [regularseason1819_games.csv](../master/data/regularseason1819_games.csv), is a list of the teams of the NBA and the sum of their players' salaries. It has 2460 rows and 47 columns (yearSeason, slugSeason, slugLeague, typeSeason, dateGame, idGame, numberGameTeamSeason, nameTeam, idTeam, isB2B, isB2BFirst, isB2BSecond, locationGame, slugMatchup, slugTeam, countDaysRestTeam, countDaysNextGameTeam, slugOpponent, slugTeamWinner, slugTeamLoser, outcomeGame, isWin, fgmTeam, fgaTeam, pctFGTeam, fg3mTeam, fg3aTeam, pctFG3Team, pctFTTeam, hasVideo, fg2mTeam, fg2aTeam,pctFG2Team,minutesTeam, ftmTeam,ftaTeam, orebTeam, drebTeam, trebTeam, astTeam, stlTeam, blkTeam, tovTeam, pfTeam, ptsTeam, plusminusTeam and urlTeamSeasonLogo).
+This dataset consists of one csv file. It's named [regularseason1819_games.csv](../master/data/regularseason1819_games.csv). It has 2460 rows and 47 columns:
+
+| Column | Type | Description |
+| :------| :----| :-----------|
+| yearSeason | num | The year when the statistics were taken |
+| slugSeason| num | The season of the match |
+| slugLeague| chr | League name |
+| typeSeason| chr | Type of season |
+| dateGame| date | Date the match was played|
+| idGame| num | Id of the match |
+| numberGameTeamSeason| num | Day in season |
+| nameTeam| num | Name of the team |
+| idTeam| num | Id of the team |
+| isB2B| num |  |
+| isB2BFirst| num |  |
+| isB2BSecond| num |  |
+| locationGame| num | Location where the match was played |
+| slugMatchup| num |  |
+| slugTeam| num |  |
+| countDaysRestTeam| num |  |
+| countDaysNextGameTeam| num |  |
+| slugOpponent| num |  |
+| slugTeamWinner| num |  |
+| slugTeamLoser| num |  |
+| outcomeGame| num |  |
+| isWin| num |  |
+| fgmTeam| num |  |
+| fgaTeam| num |  |
+| pctFGTeam| num |  |
+| fg3mTeam| num |  |
+| fg3aTeam| num |  |
+| pctFG3Team| num |  |
+| pctFTTeam| num |  |
+| hasVideo| num |  |
+| fg2mTeam| num |  |
+| fg2aTeam| num |  |
+| pctFG2Team| num |  |
+| minutesTeam| num |  |
+| ftmTeam| num |  |
+| ftaTeam| num |  |
+| orebTeam| num |  |
+| drebTeam| num |  |
+| trebTeam| num |  |
+| astTeam| num |  |
+| stlTeam| num |  |
+| blkTeam| num |  |
+| tovTeam| num |  |
+| pfTeam| num |  |
+| ptsTeam| num |  |
+| plusminusTeam| num |  |
+| urlTeamSeasonLogo | chr | Url with the logo of the team |
 
 This dataset can answer the second question. 
 
@@ -73,8 +123,21 @@ This dataset contains information about the salaries of the players of each Team
 
 It have been obtained from [Hoopshype.com](https://hoopshype.com/salaries/2018-2019/ "Hoopshype page for 2018 - 2019 salaries") and extracted using a web scraping [script](../master/utils/player_salary_scrapper.R) that recolects the data from the page of the salaries for the 2018-2019 season.
 
-This dataset consists of two csv files. The first one, [salaries_team.csv](../master/data/salaries_team.csv), is a list of the teams of the NBA and the sum of their players' salaries. It has 30 rows and 4 columns (nameTeam, idTeam, slugTeam and salaries).
+This dataset consists of two csv files. The first one, [salaries_team.csv](../master/data/salaries_team.csv), is a list of the teams of the NBA and the sum of their players' salaries. It has 30 rows and 4 columns:
 
-The second one, [salaries_player.csv](../master/data/salaries_player.csv), is a list of the players of all the teams of the NBA and his salaries. It has 621 rows and 3 columns (Player, Salary and Team).
+| Column | Type | Description |
+| :------| :----| :-----------|
+| `nameTeam` | chr | Name of the team |
+| `idTeam` | num | Id of the team |
+| `slugTeam` | chr | The abbreviation of `nameTeam` |
+| `salaries` | num | Sum of the salaries of the players of the team |
+
+The second one, [salaries_player.csv](../master/data/salaries_player.csv), is a list of the players of all the teams of the NBA and his salaries. It has 621 rows and 3 columns:
+
+| Column | Type | Description |
+| :------| :----| :-----------|
+| `Player` | chr | Name of the player |
+| `Salary` | num | Player's salary |
+| `Team` | chr |  Name of the team where the player plays |
 
 This dataset can answer the third question. 
