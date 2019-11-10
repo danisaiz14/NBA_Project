@@ -25,7 +25,7 @@ We selected the following 3 projects:
 
  1. Are the Draft Position and the Player Performance correlated?
  2. Do exist differences between East and West Conferences match performance?  
- 3. Do the salaries have a direct relationship with the draft position?
+ 3. Do the salaries have a direct relationship with the player statistics? Is there any pattern?
 
 ## Finding Data
 
