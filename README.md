@@ -92,25 +92,25 @@ This dataset consists of one csv file. It's named [regularseason1819_games.csv](
 | `fgmTeam`| num | Field goals made by the team |
 | `fgaTeam`| num | Field goals attempted by the team |
 | `pctFGTeam`| num | % of field goals made vs attempted |
-| `fg3mTeam`| num | 3-pts made by the team |
-| `fg3aTeam`| num | 3-pts made by the team |
-| `pctFG3Team`| num | % of 3-pts made vs attempted |
+| `fg3mTeam`| num | 3-pts field goals made by the team |
+| `fg3aTeam`| num | 3-pts field goals attempted by the team |
+| `pctFG3Team`| num | % of 3-pts field goals made vs attempted |
 | `pctFTTeam`| num | % of free throws scored |
 | `hasVideo`| logi |  |
-| `fg2mTeam`| num |  |
-| `fg2aTeam`| num |  |
-| `pctFG2Team`| num |  |
+| `fg2mTeam`| num | 2-pts field goals made by the team |
+| `fg2aTeam`| num | 2-pts field goals attempted by the team |
+| `pctFG2Team`| num | % of 2-pts field goals attempted by the team |
 | `minutesTeam`| num | Minutes played by the team|
-| `ftmTeam`| num |  |
-| `ftaTeam`| num |  |
-| `orebTeam`| num |  |
-| `drebTeam`| num |  |
-| `trebTeam`| num |  |
-| `astTeam`| num |  |
-| `stlTeam`| num |  |
-| `blkTeam`| num |  |
-| `tovTeam`| num |  |
-| `pfTeam`| num |  |
+| `ftmTeam`| num | Free throws made by the team |
+| `ftaTeam`| num | Free throws attempted by the team |
+| `orebTeam`| num | Offensive rebounds of the team |
+| `drebTeam`| num | Defensive rebounds of the team |
+| `trebTeam`| num | Total rebounds of the team |
+| `astTeam`| num | Number of assists of the team |
+| `stlTeam`| num | Number of steals of the team |
+| `blkTeam`| num | Number of blocks of the team |
+| `tovTeam`| num | Number of turnovers of the team |
+| `pfTeam`| num | Number of personal fouls of the team |
 | `ptsTeam`| num | Points scored by the team |
 | `plusminusTeam`| num | Difference of points scored with the other team |
 | `urlTeamSeasonLogo`| chr | Url with the logo of the team |
