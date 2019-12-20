@@ -1,0 +1,380 @@
+---
+title: "Data Processes Project Report"
+author:
+  - "Carlos Sanchez"
+  - "Alvaro Arranz"
+  - "Angel González"
+  - "Daniel Saiz"
+date: "12/16/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE, cache=TRUE}
+#knitr::opts_chunk$set(echo = TRUE, fig.width = 20)
+if (!requireNamespace("dplyr"))
+  install.packages('dplyr')
+if (!requireNamespace("tidyr"))
+  install.packages('tidyr')
+if (!requireNamespace("ggplot2"))
+  install.packages('ggplot2')
+if (!requireNamespace("devtools"))
+  install.packages('devtools')
+if (!requireNamespace("rvest"))
+  install.packages('rvest')
+if (!requireNamespace('patchwork'))
+  install.packages('patchwork')
+if (!requireNamespace('normtest'))
+  install.packages('normtest')
+```
+
+```{r load-packages, include=FALSE}
+library(knitr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(devtools)
+library(rvest)
+library(patchwork)
+library(caret)
+```
+
+```{r, include=FALSE, echo=FALSE}
+source("utils/question_2_func.R")
+matches <- read.csv("data/regularseason1819_games.csv", stringsAsFactors = F)
+teams <- read.csv("data/nba_teams.csv", stringsAsFactors = F)
+teams <- teams %>% mutate(conference = sapply(idConference, conference_classifier))
+matches <- matches %>% select(-urlTeamSeasonLogo) %>%
+  rowwise() %>%
+  mutate(conferenceMatch = type_match(teams, slugTeam, slugOpponent)) %>%
+  ungroup()
+match_conference_winner <- matches %>%
+  group_by(idGame) %>%
+  summarise(winner = first(slugTeamWinner),
+            loser = first(slugTeamLoser),
+            conferenceMatch = first(conferenceMatch)) %>%
+  rowwise() %>%
+  mutate(conferenceWinner = teams[teams$slugTeam == winner, "conference"]) %>%
+  ungroup()
+```
+### Introduction and Related Work
+
+On the project proposal we formulated 3 different questions. We decide to answer the second one about the gap between east and west conferences.
+
+
+One of our member followed for years the NBA and during that period of time the Western conference teams ruled the league with Golden State Warriors on the head. Only the Cleveland Cavaliers and Miami Heat, thanks to LeBron James could fight against the best western team. During the last 8 seasons, LeBron James won 4 rings (3 with Miami Heats and 1 with Cleveland Cavaliers) and played 7 finals.
+
+
+LeBron James is one of the best players in the NBA history, and he is able to lead a whole team to the victory almost by himself, but this is not the case with any other player of the league at this moment. LeBron moved to Los Angeles Lakers on the last season, and the project wasn't complete, which is one of the reasons to select the season 2018/2019 to avoid an outlier on the eastern team where LeBron is playing.
+
+
+To check if we were sure about our assumptions, we loaded the Match Statistics Dataset and performed several transformations to retrieve the data we wanted.
+
+
+```{r, knitr, dplyr, echo=FALSE}
+kable(match_conference_winner %>%
+  filter(conferenceMatch == "MIXED") %>%
+  count(conferenceWinner) %>%
+  rename(Conference = conferenceWinner, Wins = n)
+)
+```
+
+
+It seems like the gap between the West and the East is still there, but with this simple table we cannot be sure the data is not biased by low performing teams. To check this we plotted the wins against teams of the same conference and teams of the other, clustering the results by conferences. The script which generates the following chart can be found [here](https://github.com/AlmaProcesses/NBA_Project/blob/master/question_2.R)
+
+
+```{r, patchwork, fig.width=12, echo=FALSE}
+match_team_winner <- match_conference_winner %>%
+  group_by(winner) %>%
+  tally() %>%
+  rename(count = n) %>%
+  ungroup()
+match_team_conference_win <- match_conference_winner %>%
+  group_by(winner) %>%
+  count(conferenceMatch) %>%
+  rename(count = n) %>%
+  ungroup()
+isSameConferenceMatch <- match_team_conference_win %>%
+  rowwise() %>%
+  mutate(isSame = if(conferenceMatch != "MIXED") "SAME" else "MIXED") %>%
+  left_join(teams, by = c("winner" = "slugTeam")) %>%
+  select(winner, conferenceMatch, count, isSame, conference)
+g_east <- isSameConferenceMatch %>% filter(conference == "EAST") %>%
+  ggplot(aes(fill = isSame, y = count, x = winner)) +
+  geom_bar(position = "dodge", stat = "identity") +
+  theme(legend.position = "none",
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank()) +
+  ylim(0, 45) +
+  facet_wrap(~conference)
+g_west <- isSameConferenceMatch %>% filter(conference == "WEST") %>%
+  ggplot(aes(fill = isSame, y = count, x = winner)) +
+  geom_bar(position = "dodge", stat = "identity") +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank()) +
+  ylim(0, 45) +
+  scale_fill_discrete(name = "Conference", labels = c("Opposite", "Same")) +
+  facet_wrap(~conference)
+patchwork <- g_east + g_west
+patchwork + plot_annotation(
+  title = "Wins per team grouped by conference during the Regular Season",
+  theme = theme(plot.title = element_text(hjust = 0.45))
+)
+```
+
+
+We can see how West teams perform better than East ones on the cross matches. The eastern team with the most victories during the regular season was Toronto Raptors, which finally won the playoffs finals against Golden State Warriors. With this visualization we can assure the West conference was stronger than the East conference during the season 2018/2019.
+
+
+Here you will find several relevant work about this question that we want to answer:
+
+ * [The Talent Difference Between the West and Eastern Conferences](https://thegruelingtruth.com/basketball/the-talent-difference-between-the-west-and-eastern-conferences/)
+ * [COMPETITIVE BALANCE IN THE NBA: Comparative analysis of Eastern and Western Conferences](http://pagines.uab.cat/appliedeconomics/sites/pagines.uab.cat.appliedeconomics/files/Brosed,%20M._paper.pdf)
+ * [NBA Predictions for the 2019-2020 Season](https://www.sbnation.com/nba/2019/10/22/20899122/nba-predictions-2019-2020-season-mvp-championship-nba-finals-lakers-clippers)
+
+### Exploratory Data Analysis
+#### Datasets
+
+
+The dataset has been produced using the R package [nbastatR](http://asbcllc.com/nbastatR/), which parses information from the official [NBA API](https://stats.nba.com/) and different pages containing NBA historic data like [Hoopshype.com](https://hoopshype.com/). There are two different datasets:
+
+
+##### Match Statistics Dataset
+
+
+This dataset contains statistics about the NBA games during the 2018-19 season.
+
+This dataset consists of one csv file. It's named [regularseason1819_games.csv](https://github.com/AlmaProcesses/NBA_Project/blob/master/data/regularseason1819_games.csv). It has 2460 observations and 47 features.
+
+| Column | Type | Description |
+| :------| :----| :-----------|
+| `yearSeason` | num | The year when the statistics were taken |
+| `slugSeason`| num | The season of the match |
+| `slugLeague`| chr | League name abbreviation|
+| `typeSeason`| chr | Type of season (always `Regular Season`) |
+| `dateGame`| date | Date the match was played |
+| `idGame`| num | Id of the match on the NBA API|
+| `numberGameTeamSeason`| num | Match order for the team |
+| `nameTeam`| num | Name of the team |
+| `idTeam`| num | Id of the team on the NBA API|
+| `isB2B`| logi | The match was a back to back |
+| `isB2BFirst`| logi | The match was the first back to back |
+| `isB2BSecond`| logi | The match was the second back to back |
+| `locationGame`| chr | Location where the match was played |
+| `slugMatchup`| chr | Abbreviation of the match |
+| `slugTeam`| chr | Abbreviation of the team |
+| `countDaysRestTeam`| num | Days the team had for resting before the match |
+| `countDaysNextGameTeam`| num | Days before the next team's match |
+| `slugOpponent`| chr | Abbreviation of the opponent team |
+| `slugTeamWinner`| chr | Abbreviation of the winner team |
+| `slugTeamLoser`| chr | Abbreviation of the defeated team |
+| `outcomeGame`| chr | The abbreviation of the result (`W|L`) |
+| `isWin`| logi | True if the team won the match |
+| `fgmTeam`| num | Field goals made by the team |
+| `fgaTeam`| num | Field goals attempted by the team |
+| `pctFGTeam`| num | % of field goals made vs attempted |
+| `fg3mTeam`| num | 3-pts field goals made by the team |
+| `fg3aTeam`| num | 3-pts field goals attempted by the team |
+| `pctFG3Team`| num | % of 3-pts field goals made vs attempted |
+| `pctFTTeam`| num | % of free throws scored |
+| `hasVideo`| logi |  |
+| `fg2mTeam`| num | 2-pts field goals made by the team |
+| `fg2aTeam`| num | 2-pts field goals attempted by the team |
+| `pctFG2Team`| num | % of 2-pts field goals attempted by the team |
+| `minutesTeam`| num | Minutes played by the team|
+| `ftmTeam`| num | Free throws made by the team |
+| `ftaTeam`| num | Free throws attempted by the team |
+| `orebTeam`| num | Offensive rebounds of the team |
+| `drebTeam`| num | Defensive rebounds of the team |
+| `trebTeam`| num | Total rebounds of the team |
+| `astTeam`| num | Number of assists of the team |
+| `stlTeam`| num | Number of steals of the team |
+| `blkTeam`| num | Number of blocks of the team |
+| `tovTeam`| num | Number of turnovers of the team |
+| `pfTeam`| num | Number of personal fouls of the team |
+| `ptsTeam`| num | Points scored by the team |
+| `plusminusTeam`| num | Difference of points scored with the other team |
+| `urlTeamSeasonLogo`| chr | Url with the logo of the team |
+
+##### Teams Dataset
+
+This dataset contains information about the Teams in the NBA.
+
+This dataset consists of one csv file. The first one, [nba_teams.csv](https://github.com/AlmaProcesses/NBA_Project/blob/master/data/nba_teams.csv), is a list of the teams of the NBA and their information. It has 30 observations and 9 features.
+
+| Column | Type | Description |
+| :------| :----| :-----------|
+| `nameTeam` | chr | Name of the team |
+| `idTeam` | num | Id of the team |
+| `slugTeam` | chr | The acronym of the `nameTeam` |
+| `teamName` | chr | The colloquial name of the `nameTeam` |
+| `cityTeam` | chr | Name of the City where the team belongs |
+| `teamNameFull` | chr | The abbreviation of the `nameTeam` |
+| `idConference` | num | Id of the team conference |
+| `idDivision` | num | Id of the team division |
+| `urlThumbnailTeam` | chr | Url with the logo of the team |
+
+
+```{r, include=FALSE, echo=FALSE}
+source("playersStatsSalary.R")
+```
+- Creates 5 well designed and formatted graphics (**15 points**, 3 each)
+  - The visual uses the appropriate visual encodings based on the data type (**1 point**)
+  - Written interpretation of graphic is provided (**1 point**)
+  - Clear axis labels, titles, and legends are included, where appropriate (**1 point**)
+
+```{r, echo=FALSE, fig.width = 12}
+ggplot(merged, aes(x = countSeasons, y = sqrt(Salary))) +
+  ggtitle("Nº Seasons x Salary") +
+  geom_point(color="#050853") +
+  stat_summary(aes(y = sqrt(Salary), group = 1), fun.y = mean, colour = 'red', geom = 'line', group = 1)
+```
+
+```{r, ggplot2, echo=FALSE, fig.width = 12}
+ggplot() +
+  geom_point(data=merged, aes(x=countSeasons, y=sqrt(Salary)), color="#050853") +
+  ggtitle("Nº Seasons x Salary x Experience in other Leagues") +
+  facet_wrap(~idLeagueOtherExperience, labeller = labeller(idLeagueOtherExperience =
+         c("0" = "Only NBA",
+           "1" = "Other League")
+  ))  +
+  theme(legend.position="right")
+```
+
+```{r, echo=FALSE, fig.width = 12}
+ggplot() +
+  geom_point(data=merged, aes(x=minutes, y=pts, colour=sqrt(Salary))) +
+  ggtitle("Minutes x Points x Salary") +
+  theme(legend.position="right") +
+    facet_wrap(~idLeagueOtherExperience, labeller = labeller(idLeagueOtherExperience =
+         c("0" = "Only NBA",
+           "1" = "Other League")
+  ))  +
+  scale_colour_gradient(low="#369FF1", high="#050853")
+```
+Only NBA (usa players) has greater salaries and there is an exponential relationship between minutes and points but other Leagues (foreign players) has lower salaries and minutes and points follows a linear relation.
+
+```{r, echo=FALSE, fig.width = 12}
+ggplot() +
+  geom_point(data=merged, aes(x=minutes, y=pts, colour=sqrt(Salary))) +
+    ggtitle("Performance x nº of Seasons x Salary") +
+  theme(legend.position="right") +
+    facet_wrap(~countSeasons)  +
+  scale_colour_gradient(low="#369FF1", high="#050853")
+```
+This graph shows how performance and salary evolves over the seasons.
+
+### Methods (**30 points**)
+We want to create a ML model which can predict the salary of a player taking into account various features extracted from the season 2019-2019 statistic. At the end, the scope of this model is to predict how much could earn a player from another league if he moves to the NBA.
+
+To explore which features are related with our outcome interest, we opted to obtain the correlation matrix of our dataset.
+```{r, cache=T, include = F}
+salaries_players <- read.csv('data/salaries_player.csv', stringsAsFactors = F) %>%
+  group_by(Player) %>%
+  summarise(Salary = as.integer(mean(Salary)))
+salaries_teams <- read.csv('data/salaries_team.csv', stringsAsFactors = F)
+info_players <- read.csv('data/players.csv', stringsAsFactors = F)
+stats_players <- read.csv('data/logs_players.csv', stringsAsFactors = F)
+totalSalary <- sum(salaries_teams$salaries)
+salaries_joined <- salaries_players %>%
+  left_join(select(info_players, namePlayer, idTeam),
+            by = c('Player' = 'namePlayer')) %>%
+  filter(!is.na(idTeam)) %>%
+  left_join(select(salaries_teams, -nameTeam) %>%
+              rename(TeamSalary = salaries),
+            by = 'idTeam') %>%
+  mutate(pctSalaryTeam = Salary / TeamSalary,
+         pctSalaryTotal = Salary / totalSalary)
+stats_aggr <- stats_players %>%
+  group_by(namePlayer) %>%
+  summarize(winrate = mean(isWin == TRUE),
+            minutes = mean(minutes, na.rm=TRUE),
+            pts = mean(pts, na.rm=TRUE),
+            ast = mean(ast, na.rm=TRUE),
+            plusminus = mean(plusminus, na.rm=TRUE),
+            blk = mean(blk, na.rm=TRUE),
+            stl = mean(stl, na.rm=TRUE),
+            pctFG3 = mean(pctFG3, na.rm=TRUE),
+            tov = mean(tov, na.rm=TRUE),
+            pctFG = mean(pctFG, na.rm=TRUE),
+            oreb = mean(oreb, na.rm=TRUE),
+            dreb = mean(dreb, na.rm=TRUE),
+            pf = mean(pf, na.rm=TRUE),
+            treb = mean(treb, na.rm=TRUE),
+            fg2m = mean(fg2m, na.rm=TRUE),
+            fg2a = mean(fg2a, na.rm=TRUE),
+            fga = mean(fga, na.rm=TRUE),
+            fgm = mean(fgm, na.rm=TRUE),
+            ftm = mean(ftm, na.rm=TRUE))%>%
+  ungroup()
+merged_player_tables <- info_players %>%
+  filter(yearSeasonFirst < 2019) %>%
+  left_join(salaries_joined, by = c('namePlayer' = 'Player')) %>%
+  select(namePlayer, countSeasons, Salary, TeamSalary, pctSalaryTeam, pctSalaryTotal) %>%
+  filter(!is.na(Salary))
+player_seasons <- info_players %>% select(namePlayer, countSeasons)
+reduced_aggr_data <- stats_aggr %>%
+  left_join(select(salaries_joined,
+                   -idTeam,
+                   slugTeam), by = c('namePlayer' = 'Player')) %>%
+  left_join(player_seasons) %>%
+  filter(!is.na(countSeasons), pctFG != 'NaN') %>%
+  select(-slugTeam)
+pre_ml_data <- reduced_aggr_data %>%
+  select(-namePlayer, -TeamSalary, -pctSalaryTeam, -Salary)
+cor_matrix <- cor(pre_ml_data, method = "pearson")
+cor_salary <- cor_matrix[20,] %>% sort(T)
+```
+`r kable(cor_matrix[1:6,1:6])`
+The full matrix cannot be displayed on this report because it has so many elements. Anyways, we're only interested on the correlations with the response variable, so we will only pick the row of the matrix were these correlations are displayed
+`r kable(cor_salary)`
+We're going to pick only the features with more than 0.5 of correlation with the response variables, including `stl` since its correlation value is 0.496.
+
+Having selected the features to be included in the formula, we have a formula with 10 features. To split the data we're going to set a seed and set the partition rate on 80/20 for training and testing.
+```{r, cache = T}
+set.seed(2403)
+ml_data <- pre_ml_data %>%
+  select(pts, fgm, minutes, ftm, countSeasons, tov, fg2m, dreb, ast, stl, pctSalaryTotal)
+trainIndex <- createDataPartition(ml_data$pctSalaryTotal, p = .8, list = FALSE, times = 1)
+training_set <- ml_data[ trainIndex, ]
+test_set <- ml_data[ -trainIndex, ]
+```
+Once we have the data splitted, we have to set our model. We chose a Parallel Random Forest, provided in the `caret` package because is the one of the most accurate machine learning algorithms available nowadays.
+
+We set a repeated cross-validation control to the model and also a grid with 3 different `mtry` values.
+```{r, cache = T, echo= T, warning=F}
+fitControl <- trainControl(
+  method = "repeatedcv",
+  number = 10,
+  repeats = 3
+)
+tune_grid <- expand.grid(.mtry = c(2,6,10))
+model_fit <- train(pctSalaryTotal ~ .,
+                   data = ml_data,
+                   method = "parRF", # Parallel Random Forest
+                   trControl = fitControl,
+                   tuneGrid = tune_grid,
+                   na.action = na.exclude)
+model_preds <- predict(model_fit, test_set)
+```
+
+### Results (**20 points**)
+
+Once the model has been trained, we can check the different `mtry` values tested and how they performed.
+```{r, echo = F}
+print(model_fit)
+mae_value <- MAE(model_preds, test_set$pctSalaryTotal)
+mae_salary <- mae_value * totalSalary
+```
+As we can see in the model report, the best RMSE obtained is 0.001329462.
+
+We have to take into account the response variable is not the salary but the % of salary compared with the total of NBA salaries. So if we multiply the MAE by this amount, we get the MAE on the original variable of `r as.integer(mae_salary)`. Taking into account our dataset only contains data of one season and the are a lot of factors affecting the players salaries which are not part of the game itself, we're really satisfied with the performance of our model.
+
+With this results we could provide a quite accurate prediction of their salaries to players from other leagues who want to move to the NBA. Anyways, they'd have to wait for some years to take into account this prediction since the first years the salary is totally conditioned by the position in the draft.
+
+
+- **Predictions**: How well were you able to predict values in the dataset? You should both report appropriate metrics based on the type of outcome you're predicting (e.g., root mean squared error v.s. accuracy), as well as a high quality visual showing the strength of your model (**10 points**)
+
+### Discussion and Future Work (**10 points**)
+Based on _specific observations_ from the results section, the report clearly provides:
+  - An analysis of the real world implications of the results, at least one full paragraph (**5 points**)
+  - Clear suggestion for directions of future research, at least one full paragraph (**5 points**)
